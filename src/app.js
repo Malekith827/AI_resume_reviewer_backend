@@ -7,8 +7,14 @@ import reviewRoutes from './routes/reviewRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import mongoose from 'mongoose';
 import rateLimit from 'express-rate-limit'
+import fs from 'fs'
 
 dotenv.config();
+
+if (!fs.existsSync('uploads')) {
+  fs.mkdirSync('uploads', { recursive: true })
+}
+
 mongoose.connect(process.env.MONGO_URI)
     .then(()=>console.log("mongoDB connected"))
     .catch((error)=> console.error("MongoDB connection error: ",error))
