@@ -46,9 +46,9 @@ app.use(cors({
 
 app.use(express.json());
 
-//app.use(globalLimiter)
+app.use(globalLimiter)
 
-//app.use('/api/review', reviewLimiter)
+app.use('/api/review', reviewLimiter)
 
 app.use('/api',reviewRoutes);
 
